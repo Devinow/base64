@@ -4,11 +4,11 @@
  * Copyright (c) Devinow (https://devinow.xyz/)
  */
 
-namespace Delight\Base64;
+namespace Devinow\Base64;
 
 
-use Delight\Base64\Throwable\DecodingError;
-use Delight\Base64\Throwable\EncodingError;
+use Devinow\Base64\Throwable\DecodingError;
+use Devinow\Base64\Throwable\EncodingError;
 
 
 final class Base64 {
