@@ -1,43 +1,53 @@
 ## Installation
 ```
-composer require devinow/http
+composer require devinow/base64
 ```
 ## Usage
 
-### Response headers
+### Standard
 
- * Retrieving a header (with optional value prefix)
+ * Encoding data
 
    ```php
-   $header = \Devinow\Http\ResponseHeader::get('Content-Type');
-   // or
-   $header = \Devinow\Http\ResponseHeader::get('Content-Type', 'text/');
+   \Devinow\Base64\Base64::encode('Gallia est omnis divisa in partes tres');
+   // string(52) "R2FsbGlhIGVzdCBvbW5pcyBkaXZpc2EgaW4gcGFydGVzIHRyZXM="
    ```
 
- * Setting a header (overwriting other headers with the same name)
+ * Decoding data
 
    ```php
-   \Devinow\Http\ResponseHeader::set('X-Frame-Options', 'sameorigin');
+   \Devinow\Base64\Base64::decode('R2FsbGlhIGVzdCBvbW5pcyBkaXZpc2EgaW4gcGFydGVzIHRyZXM=');
+   // string(38) "Gallia est omnis divisa in partes tres"
    ```
 
- * Adding a header (preserving other headers with the same name)
+### URL-safe
+
+ * Encoding data
 
    ```php
-   \Devinow\Http\ResponseHeader::add('Vary', 'User-Agent');
+   \Devinow\Base64\Base64::encodeUrlSafe('πάντα χωρεῖ καὶ οὐδὲν μένει …');
+   // string(80) "z4DOrM69z4TOsSDPh8-Jz4HOteG_liDOus6x4b22IM6_4b2QzrThvbLOvSDOvM6tzr3Otc65IOKApg~~"
    ```
 
- * Removing a header (with optional value prefix)
+ * Decoding data
 
    ```php
-   $success = \Devinow\Http\ResponseHeader::remove('X-Powered-By');
-   // or
-   $success = \Devinow\Http\ResponseHeader::remove('X-Powered-By', 'PHP');
+   \Devinow\Base64\Base64::decodeUrlSafe('z4DOrM69z4TOsSDPh8-Jz4HOteG_liDOus6x4b22IM6_4b2QzrThvbLOvSDOvM6tzr3Otc65IOKApg~~');
+   // string(58) "πάντα χωρεῖ καὶ οὐδὲν μένει …"
    ```
 
- * Retrieving and removing a header at once (with optional value prefix)
+### URL-safe without padding
+
+ * Encoding data
 
    ```php
-   $header = \Devinow\Http\ResponseHeader::take('Set-Cookie');
-   // or
-   $header = \Devinow\Http\ResponseHeader::take('Set-Cookie', 'mysession=');
+   \Devinow\Base64\Base64::encodeUrlSafeWithoutPadding('πάντα χωρεῖ καὶ οὐδὲν μένει …');
+   // string(78) "z4DOrM69z4TOsSDPh8-Jz4HOteG_liDOus6x4b22IM6_4b2QzrThvbLOvSDOvM6tzr3Otc65IOKApg"
+   ```
+
+ * Decoding data
+
+   ```php
+   \Devinow\Base64\Base64::decodeUrlSafeWithoutPadding('z4DOrM69z4TOsSDPh8-Jz4HOteG_liDOus6x4b22IM6_4b2QzrThvbLOvSDOvM6tzr3Otc65IOKApg');
+   // string(58) "πάντα χωρεῖ καὶ οὐδὲν μένει …"
    ```
