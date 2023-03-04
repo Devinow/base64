@@ -1,0 +1,37 @@
+{
+	"name": "devinow/base64",
+	"description": "Devinow Framework Base64 Library,Simple and convenient Base64 encoding and decoding.",
+	"type": "library",
+	"license": "MIT",
+	"keywords": [ "base64", "base-64", "encode", "decode", "encoding", "decoding", "url-safe", "url" ],
+	"require": {
+	  "php": ">=8.1.0"
+	},
+	"authors": [
+	  {
+		"name": "Devinow",
+		"email": "info@devinow.xyz",
+		"homepage": "https://devinow.xyz",
+		"role": "Developer"
+	  }
+	],
+	"repositories": [
+	  {
+		  "type": "vcs",
+		  "url": "https://github.com/devinow/base64"
+	  }
+	],
+	"support": {
+		  "email": "info@devinow.xyz"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"autoload": {
+	  "psr-4": {
+		"Devinow\\Base64\\": "/"
+	  },
+	  "files": [
+		"loader.php"
+	  ]
+	}
+}
